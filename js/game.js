@@ -1,4 +1,6 @@
 const grid = document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
 
 const characters = [
     'beth',
@@ -26,7 +28,9 @@ const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
 
     if(disabledCards.length === 20) {
-        alert('Parabéns!!! Você é o novo campeão de mortal kombat!!!')
+        clearInterval(this.loop);
+        alert(`Parabéns! ${spanPlayer.innerHTML}! Você é o novo campeão de Mortal Kombat!`);
+        alert(`Seu tempo foi de: ${timer.innerHTML} segundos`)
     }
 }
 
@@ -103,7 +107,6 @@ const loadGame = () => {
 
     const shuffledArray = duplicateCharacters.sort( () => Math.random() - 0.5  );
 
-
     duplicateCharacters.forEach((character) => {
 
         const card = createCard(character);
@@ -113,4 +116,17 @@ const loadGame = () => {
 
 }
 
-loadGame();
+const startTimer = () => {
+   
+    this.loop = setInterval(() => {
+        const currentTime = Number(timer.innerHTML);
+        timer.innerHTML = currentTime + 1;
+    }, 1000);
+
+}
+
+window.onload = () => {
+    spanPlayer.innerHTML = localStorage.getItem('player');
+    startTimer();
+    loadGame();
+}
