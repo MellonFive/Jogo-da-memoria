@@ -29,7 +29,7 @@ const checkEndGame = () => {
 
     if(disabledCards.length === 20) {
         clearInterval(this.loop);
-        alert(`Parabéns! ${spanPlayer.innerHTML}! Você é o novo campeão de Mortal Kombat!`);
+        alert(`Parabéns, ${spanPlayer.innerHTML}! Você é o novo campeão de Mortal Kombat!`);
         alert(`Seu tempo foi de: ${timer.innerHTML} segundos`)
     }
 }
@@ -59,7 +59,6 @@ const checkCards = () => {
         secondCard = '';
         
       }, 500);
-
 
     }
 }
